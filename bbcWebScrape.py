@@ -12,5 +12,6 @@ def getTopStoryBBC():
 	topStory.append(articleContents[0].text)
 	return topStory
 #Example usage
-x = getTopStoryBBC()
-print(' - '.join(x))
+if __name__ == '__main__':
+	x = getTopStoryBBC()
+	print(' - '.join(x))
