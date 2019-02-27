@@ -20,6 +20,7 @@ def get_updates_cusu():
 	times = []
 	locations = []
 	descriptions = []
+	images = []
 	edata = []
 	response = requests.get('https://www.cusu.org/coventry')
 	cusuContent = BeautifulSoup(response.content, 'html.parser')
@@ -31,11 +32,14 @@ def get_updates_cusu():
 		locations.append(location.text) #Locations
 	for description in cusuContent.findAll('dd',{'class':'msl_event_description'}):
 		descriptions.append(description.text) #Descriptions
+	for image in cusuContent.findAll('span',{'class':'msl_event_image'}):
+		images.append("https://www.cusu.org"+image.img['src']) #Image links
 	for i in range(len(events)):
 		edata.append(events[i])
 		edata.append(times[i])
 		edata.append(locations[i])
 		edata.append(descriptions[i])
+		edata.append(images[i])
 	x = numpy.array_split(numpy.array(edata),len(events))
 	return x
 def get_university_news():
