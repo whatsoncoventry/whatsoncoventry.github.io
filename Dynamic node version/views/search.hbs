@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>What's on Coventry</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+	    <link rel="stylesheet" href="css/events.css" />
+  </head>
+  <body class="is-preload">
+      
+			<header id="header">
+				<a class="logo" href="/">What's on Coventry</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+                    <li><a href="/events">Events</a></li>
+					<li><a href="/elements">Elements</a></li>
+					<li><a href="/generic">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>Events</h1>
+            </div> 
+      
+            <div class="search-container inner">
+                        <form action="/events" method="get">
+                          <input id="searchbar" type="text" placeholder="Search.." name="q" value="{{querry}}">
+                          <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                     </div>
+            <!-- Main -->
+			<section id="main" class="wrapper">
+                    
+                                         	
+                
+                <!-- Elements -->
+                
+                <div class="row">
+                     
+                     
+                <div class="midcolumn">
+                     {{#each events}}
+                     <div class="event">
+                         <img src="https://www.cusu.org/asset/Event/7940/salsa.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit, alt="Salsa">                         
+                         <dl>
+                         <dt>
+                         <h3 class="evtitle">{{this.eventname}}</h3>                         
+                         </dt>
+                         <dd class="evtime">
+                         <i class="fa fa-calendar"></i>
+                         {{this.eventtime}}
+                         {{this.eventdate}}
+                         </dd>
+                         <dd class="evlocation">
+                         <i class="fa fa-map-marker"></i>
+                         {{this.eventaddress}}
+                         {{this.eventpostcode}}
+                         </dd>
+                         <dd class="evdescription">
+                         {{this.eventdescription}}
+                         </dd>                         
+                         </dl>
+                      </div>
+                      {{/each}}
+                 </div>             
+             
+                 <div id="righcolumn">
+                    <div id="google"></div>
+                    <script>
+                        function myMap() {
+                            var mapProp= {
+                              center:new google.maps.LatLng(52.408082,-1.510536),
+                              zoom:14,
+                            };
+                        var map = new google.maps.Map(document.getElementById("google"),mapProp);
+                        }
+                    </script>                  
+                    </div>
+                    </div>
+                    </div>
+             </section>       
+                    
+      			<section id="cta" style="text-align:left";>
+				<div class="inner">
+                    <p>Sign up to our newsletter</p>
+					<p>Simply click here and enter your email address to sign up to our newsletter</p>
+				</div>
+                
+                
+                    
+			<!-- Testimonials -->
+        
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>About the project</h3>
+							<p>What's on Coventry is a project brought to you by Daniel Jones, Adam Smith, Jennifer Wan, Ricards Veveris, Thomas Walczak, Ross Woolfenden, and Razcan Danciulescu. We aim to bring you a fast, convenient, and effective way of getting the most recent and accurate information about the city and university of Coventry</p>
+						</section>
+			
+						<section>
+							<h4>Social media</h4>
+							<ul class="plain">
+								<li><a href="https://twitter.com/WhatOnCoventry"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="https://www.facebook.com/Whats-On-Coventry-1960577907395132"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="https://www.youtube.com/watch?v=WagR3jaBW34"><i class="icon fa-youtube">&nbsp;</i>YouTube</a></li>
+							</ul>
+						</section>
+					</div>
+					<div class="copyright">
+						&copy; Coventry University
+					</div>
+				</div>
+			</footer>
+      </section>
+      
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbpAoitTDg63ex1g6-ByVrC0BLroQqRwY&callback=myMap"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/browser.min.js"></script>
+	<script src="js/breakpoints.min.js"></script>
+	<script src="js/util.js"></script>
+	<script src="js/main.js"></script>
+
+    </body>
+</html>
