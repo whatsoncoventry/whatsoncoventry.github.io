@@ -1778,6 +1778,12 @@ ul.icons {
     .image.main img {
       width: 100%; }
 
+.responsive{
+	width: 100%;
+	height: auto;
+}
+ 
+
 /* Wrapper */
 .wrapper {
   padding: 8rem 0 6rem 0 ;
