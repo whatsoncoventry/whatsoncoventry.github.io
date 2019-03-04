@@ -583,6 +583,47 @@ ol {
   padding-left: 1.25rem; }
   ol li {
     padding-left: 0.25rem; }
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+
+}
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
 
 ul {
   list-style: disc;
@@ -631,7 +672,9 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: deepskyblue;
-    color: black
+    color: black;
+    font-size: 150%;
+    
 }
 a{
     display: block;
@@ -846,8 +889,12 @@ table.alt tbody tr td {
       width: calc(100% + 1rem); } }
 
 .highlights .content {
-  background: #ffffff;
+    background-color: white;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025); }
+
+#box:hover{
+    background-color: skyblue;
+}
 
 /* Testimonials */
 .testimonials {
@@ -2268,10 +2315,7 @@ ul.icons {
     #cta {
       background-attachment: scroll; } }
 
-#box{
-    
- 
-}
+
 /* Footer */
 #footer {
   background-color: #111111;
@@ -2500,8 +2544,8 @@ body {
   z-index: 10001; }
   #header > .logo {
     color: deepskyblue;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: bolder;
     height: inherit;
     line-height: inherit;
     padding: 0 1.25rem;
