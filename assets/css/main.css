@@ -660,7 +660,7 @@ nav li {
 }
 li a {
   display: block;
-  color: deepskyblue;
+  color: white;
   text-align: center;
 
     font-weight: bold;
@@ -2543,7 +2543,7 @@ body {
   width: 100%;
   z-index: 10001; }
   #header > .logo {
-    color: deepskyblue;
+    color: white;
     font-size: 2rem;
     font-weight: bolder;
     height: inherit;
