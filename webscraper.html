@@ -1,4 +1,79 @@
-<!DOCTYPE HTML>
+#!usr/bin/python3
+#Daniel Jones
+#import sqlite3 #Possible sqlite3 conversion
+import json
+from bs4 import BeautifulSoup
+import requests
+import datetime
+now = datetime.datetime.now()
+lastupdate = now.strftime("%d-%m-%Y %H:%M")
+"""Functions to webscrape useful information from relevant target sites"""
+def get_top_story_bbc():
+	"""Function to get BBC's Coventry and Warwickshire top story. Returns an array of two elements where the first it the top story title and the second the contents"""
+	topStory = []
+	response = requests.get('https://www.bbc.co.uk/news/england/coventry_and_warwickshire')
+	bbcContent = BeautifulSoup(response.content, 'html.parser')
+	topStory.append(bbcContent.findAll('span', {'class' : 'title-link__title-text'})[0].text) 
+	topStory.append(bbcContent.findAll('p', {'class' : 'skylark__summary'})[0].text)
+	return topStory
+def get_updates_cusu():
+	"""Function to get the CUSU most recent updates and stories. Returns an array where each block of 4 elements are relative"""
+	events = []
+	times = []
+	locations = []
+	descriptions = []
+	images = []
+	data = ""
+	response = requests.get('https://www.cusu.org/coventry')
+	cusuContent = BeautifulSoup(response.content, 'html.parser')
+	for event in cusuContent.findAll('a',{'class':'msl_event_name'}):
+		events.append("<li>"+event.text+"</li> <br />") #Titles
+	for date in cusuContent.findAll('dd',{'class':'msl_event_time'}):
+		times.append("<li> When: "+date.text+"</li> <br />") #Dates
+	for location in cusuContent.findAll('dd',{'class':'msl_event_location'}):
+		locations.append("<li> Where: "+location.text+"</li> <br />") #Locations
+	for description in cusuContent.findAll('dd',{'class':'msl_event_description'}):
+		descriptions.append("<li>"+description.text+"</li> <br />") #Descriptions
+	for image in cusuContent.findAll('span',{'class':'msl_event_image'}):
+		images.append("<img src = '"+"https://www.cusu.org"+image.img['src']+"' style='width:480px;height:270px;'> <br />") #Image links
+	results = zip(images,events,times,locations,descriptions)
+	for result in results:
+		data+=(' '.join(result))
+	return data
+def get_university_news():
+	"""Returns a string of posts with links and dates from the CUMoodle 'University News' section"""
+	response = requests.get('https://cumoodle.coventry.ac.uk')
+	moodleContent = BeautifulSoup(response.content, 'html.parser')
+	postLinks =[]
+	headings = []
+	dates = []
+	data = ""
+	for title in moodleContent.findAll('div',{'class':'subject'}):
+		headings.append(title.text+"</a></p>")
+	for link in moodleContent.findAll('div',{'class':'link'}):
+		postLinks.append("<p style = 'font-size:120%;'> <a href = '"+link.a['href']+"'>") #Post links
+	for date in moodleContent.findAll('div',{'class':'author'}):
+		dates.append("<p style='font-size:90%;'>"+date.text[18:]+"</p><br>")
+	results = zip(postLinks, headings, dates)
+	for result in results:
+		data+=(''.join(result))
+	print(data)
+	return data
+if __name__ == '__main__':
+	#Example usage
+	bbcStory = get_top_story_bbc()
+	cusuUpdate = get_updates_cusu()
+	print(cusuUpdate)
+	moodleUpdate = get_university_news()
+	#print(moodleUpdate)
+	bbcStoryToWeb = ' - '.join(list(bbcStory))
+	"""with open('data.json', 'w') as fp:
+					json.dump(bbcStory, fp, indent=4) 							#json incorporation
+					for i in range(len(cusuUpdate)):
+						json.dump(cusuUpdate[i].tolist(), fp, indent=4)
+					json.dump(moodleUpdate, fp, indent=4)"""
+			
+	webpage = '''<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>What's On Coventry</title>
@@ -40,23 +115,23 @@
                 <div class="content">
                     <header>
                         <h2 style="font-size:300%; text-align:center; font-style:bolder; font-weight:bolder;">Coventry's Latest News and Events</h2>
-                        <p style="text-align:center;">Last updated: 08-03-2019 00:08</p>
+                        <p style="text-align:center;">Last updated: {lastupdate}</p>
                         
 						<hr>
                     </header>
                     
 					<center>
-					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire"> <img class="responsive" src="images/bbcnews.png" style='width:380px;height:170px;'> </a> </center>
-                     <p style="font-size:120%; font-weight:bold;">Death crash bus firm must reduce fleet - A double-decker smashed into a Sainsbury's in Coventry in 2015, killing a boy, seven, and woman, 76.</p>
+					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire"> <img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> </center>
+                     <p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
                     	<hr />
                     	
                     <h6 style="font-size:200%; text-align:center; font-weight:bold;" >Student Union News</h6>
                   		
-                     <ul><p style="font-size:120%;"><img src = 'https://www.cusu.org/asset/Event/7947/pexels-photo-1340502.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>International Womens Day Graffiti Mural</li> <br /> <li> When: 8th March 10am - 3pm</li> <br /> <li> Where: The Hub</li> <br /> <li>Come and interact with our exclusive Graffiti Mural for International Womens Day</li> <br /><img src = 'https://www.cusu.org/asset/Organisation/7949/logo-communities-entertainments.png?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>Student Events Community Meeting</li> <br /> <li> When: 8th March 2pm - 3pm</li> <br /> <li> Where: Meeting Room 1, The Hub</li> <br /> <li>The next Student Events Community meeting is taking place 8th March, and is a chance to dicuss plans for the next Community event!</li> <br /><img src = 'https://www.cusu.org/asset/Event/7947/pexels-photo-66134.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>Exclusive Film Screening with Meera Darji !</li> <br /> <li> When: 8th March 6pm - 8pm</li> <br /> <li> Where: GEG32</li> <br /> <li>Join us on International Womens Day for an exlusive premiere of Meera Darji's brand new documentary film ....</li> <br /><img src = 'https://www.cusu.org/asset/Event/7762/przym-image-1.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>Trip to Pryzm every Friday</li> <br /> <li> When: 8th March 10pm - 3:30am</li> <br /> <li> Where: University Square</li> <br /> <li>Jump on the coach trip to Birmingham and visit the incredible night life of our neighbouring city at Pryzm.</li> <br /><img src = 'https://www.cusu.org/asset/Event/8793/1920x1080visituktripstemlate.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>Visit UK Day trip to Bristol</li> <br /> <li> When: 9th March 9:15am - 4:30pm</li> <br /> <li> Where: University Square</li> <br /> <li>Bristol is a beautiful waterside city with a young vibrant culture which is unmissable.</li> <br /><img src = 'https://www.cusu.org/asset/Event/7947/womens-day-all-dayer.PNG?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>International Womens Day All Dayer</li> <br /> <li> When: 9th March 4:30pm - 10pm</li> <br /> <li> Where: Backhaus & Co - Fargo Village</li> <br /> <li></li> <br /><img src = 'https://www.cusu.org/asset/Event/7998/LA-graphic.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>CUSU Leadership Award Application Workshop</li> <br /> <li> When: 11th March 5:05pm - 5:30pm</li> <br /> <li> Where: GE338</li> <br /> <li>Find out about the CUSU Leadership award, and optionally bring a laptop and apply in-session!</li> <br /><img src = 'https://www.cusu.org/asset/Event/7762/general-kasbah-image.jpg?thumbnail_width=480&thumbnail_height=270&resize_type=CropToFit' style='width:480px;height:270px;'> <br /> <li>Bubble Luv</li> <br /> <li> When: 11th March 10pm - 3am</li> <br /> <li> Where: Kasbah</li> <br /> <li>Bubble Luv at Kasbah is the biggest Monday night club night in Coventry and is not to be missed!</li> <br /></p></ul>
+                     <ul><p style="font-size:120%;">{cusuUpdate}</p></ul>
 						<hr />
 					<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Coventry University News</h6>
                   		
-                     <ul><p style = 'font-size:120%;'> <a href = 'https://cumoodle.coventry.ac.uk/mod/forum/discuss.php?d=215392'>Green week finale</a></p><p style='font-size:90%;'>Thursday, 7 March 2019, 6:37 PM</p><br><p style = 'font-size:120%;'> <a href = 'https://cumoodle.coventry.ac.uk/mod/forum/discuss.php?d=215386'>Skills for Global Leaders – Summer Schools</a></p><p style='font-size:90%;'>Thursday, 7 March 2019, 5:50 PM</p><br><p style = 'font-size:120%;'> <a href = 'https://cumoodle.coventry.ac.uk/mod/forum/discuss.php?d=215234'>UCAS and You!</a></p><p style='font-size:90%;'>Thursday, 7 March 2019, 10:34 AM</p><br><p style = 'font-size:120%;'> <a href = 'https://cumoodle.coventry.ac.uk/mod/forum/discuss.php?d=215128'>Funding for summer placements - APPLY NOW!</a></p><p style='font-size:90%;'>Wednesday, 6 March 2019, 5:13 PM</p><br><p style = 'font-size:120%;'> <a href = 'https://cumoodle.coventry.ac.uk/mod/forum/discuss.php?d=215119'>CUSU Elections Question Time!</a></p><p style='font-size:90%;'>Wednesday, 6 March 2019, 4:17 PM</p><br></ul>
+                     <ul>{moodleUpdate}</ul>
                      
                      
 						<hr />
@@ -96,9 +171,18 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-		<script type="text/javascript">function add_chatinline(){var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+		<script type="text/javascript">function add_chatinline(){{var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}}
 add_chatinline(); </script>
 
     </body>
 </html>
-			
+			'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)		
+	with open('webscraper.html', 'w') as htmlPage:
+		htmlPage.write(webpage)				
+	htmlPage.close()
+	"""conn = sqlite3.connect('webscraper.db') #Sql test
+				sql = conn.cursor()
+				sql.execute("INSERT INTO BBCTopStory (Article) VALUES (?)",[bbcStory])			#SQL incorporation
+				conn.commit()
+				sql.close()
+				conn.close"""
