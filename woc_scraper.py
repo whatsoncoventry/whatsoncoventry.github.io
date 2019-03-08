@@ -17,7 +17,7 @@ def get_top_story_bbc():
 	topStory.append(bbcContent.findAll('p', {'class' : 'skylark__summary'})[0].text)
 	return topStory
 def get_updates_cusu():
-	"""Function to get the CUSU most recent updates and stories. Returns an array where each block of 4 elements are relative"""
+	"""Function to get the CUSU most recent updates and stories"""
 	events = []
 	times = []
 	locations = []
@@ -27,13 +27,13 @@ def get_updates_cusu():
 	response = requests.get('https://www.cusu.org/coventry')
 	cusuContent = BeautifulSoup(response.content, 'html.parser')
 	for event in cusuContent.findAll('a',{'class':'msl_event_name'}):
-		events.append("<li>"+event.text+"</li> <br />") #Titles
+		events.append("<p style='font-weight:bold;'>"+event.text+"</p>") #Titles
 	for date in cusuContent.findAll('dd',{'class':'msl_event_time'}):
 		times.append("<li> When: "+date.text+"</li> <br />") #Dates
 	for location in cusuContent.findAll('dd',{'class':'msl_event_location'}):
 		locations.append("<li> Where: "+location.text+"</li> <br />") #Locations
 	for description in cusuContent.findAll('dd',{'class':'msl_event_description'}):
-		descriptions.append("<li>"+description.text+"</li> <br />") #Descriptions
+		descriptions.append(description.text+"<br /> <br />") #Descriptions
 	for image in cusuContent.findAll('span',{'class':'msl_event_image'}):
 		images.append("<img src = '"+"https://www.cusu.org"+image.img['src']+"' style='width:480px;height:270px;'> <br />") #Image links
 	results = zip(images,events,times,locations,descriptions)
@@ -51,22 +51,20 @@ def get_university_news():
 	for title in moodleContent.findAll('div',{'class':'subject'}):
 		headings.append(title.text+"</a></p>")
 	for link in moodleContent.findAll('div',{'class':'link'}):
-		postLinks.append("<p style = 'font-size:120%;'> <a href = '"+link.a['href']+"'>") #Post links
+		postLinks.append("<p style = 'font-size:120%;'> <a href = '"+link.a['href']+"'>") 
 	for date in moodleContent.findAll('div',{'class':'author'}):
-		dates.append("<p style='font-size:90%;'>"+date.text[18:]+"</p><br>")
+		dates.append("<p style='font-size:90%;'>"+date.text[18:]+"</p>")
 	results = zip(postLinks, headings, dates)
 	for result in results:
 		data+=(''.join(result))
-	print(data)
 	return data
 if __name__ == '__main__':
 	#Example usage
 	bbcStory = get_top_story_bbc()
 	cusuUpdate = get_updates_cusu()
-	print(cusuUpdate)
 	moodleUpdate = get_university_news()
-	#print(moodleUpdate)
 	bbcStoryToWeb = ' - '.join(list(bbcStory))
+	
 	"""with open('data.json', 'w') as fp:
 					json.dump(bbcStory, fp, indent=4) 							#json incorporation
 					for i in range(len(cusuUpdate)):
@@ -121,7 +119,7 @@ if __name__ == '__main__':
                     </header>
                     
 					<center>
-					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire"> <img class="responsive" src="images/bbcnews.png" style='width:380px;height:170px;'> </a> </center>
+					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire"> <img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> </center>
                      <p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
                     	<hr />
                     	
@@ -180,6 +178,7 @@ add_chatinline(); </script>
 	with open('webscraper.html', 'w') as htmlPage:
 		htmlPage.write(webpage)				
 	htmlPage.close()
+	print("built")
 	"""conn = sqlite3.connect('webscraper.db') #Sql test
 				sql = conn.cursor()
 				sql.execute("INSERT INTO BBCTopStory (Article) VALUES (?)",[bbcStory])			#SQL incorporation
