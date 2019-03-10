@@ -79,27 +79,23 @@ if __name__ == '__main__':
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="css/main.css" />
 	</head>
     <body class="is-preload">
-
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="index.html">What's On Coventry</a>
-            <nav>
-                <a href="#menu">Menu</a>
-            </nav>
-        </header>
-
+            <a class="logo" href="/">What's On Coventry</a>
         <!-- Nav -->
-        <nav id="menu">
-            <ul class="links">
+        	<nav>
+        <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="events">Events</a></li>
-                <li><a href="visit">Visit</a></li>
-                <li><a href="news">News and Updates</a></li>
-            </ul>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/visit">Visit</a></li>
+                <li><a href="/news">News and Updates</a></li>
+            
+        </ul>
         </nav>
+        </header>
 
         <!-- Heading -->
         <div id="heading">
@@ -175,7 +171,7 @@ add_chatinline(); </script>
     </body>
 </html>
 			'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)		
-	with open('news.html', 'w') as htmlPage:
+	with open('news.hbs', 'w') as htmlPage:
 		htmlPage.write(webpage)				
 	htmlPage.close()
 	print("built")
