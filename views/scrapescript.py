@@ -175,7 +175,7 @@ add_chatinline(); </script>
     </body>
 </html>
 			'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)		
-	with open('webscraper.html', 'w') as htmlPage:
+	with open('news.html', 'w') as htmlPage:
 		htmlPage.write(webpage)				
 	htmlPage.close()
 	print("built")
