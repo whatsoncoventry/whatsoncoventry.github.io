@@ -94,16 +94,16 @@ if __name__ == '__main__':
         <!-- Nav -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="elements.html">Elements</a></li>
-                <li><a href="visit.html">Visit</a></li>
-                <li><a href="webscraper.html">Latest news</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="events">Events</a></li>
+                <li><a href="visit">Visit</a></li>
+                <li><a href="news">News and Updates</a></li>
             </ul>
         </nav>
 
         <!-- Heading -->
         <div id="heading">
-            <h1 style="font-weight:bold;">Latest news</h1>
+            <h1 style="font-weight:bold;">News and Updates</h1>
         </div>
 		
 
@@ -112,7 +112,7 @@ if __name__ == '__main__':
             <div class="inner">
                 <div class="content">
                     <header>
-                        <h2 style="font-size:300%; text-align:center; font-style:bolder; font-weight:bolder;">Coventry's Latest News and Events</h2>
+                        <p style="font-size:200%; text-align:center;">The latest news, events, and updates all in once place</p>
                         <p style="text-align:center;">Last updated: {lastupdate}</p>
                         
 						<hr>
