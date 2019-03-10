@@ -108,7 +108,7 @@ if __name__ == '__main__':
             <div class="inner">
                 <div class="content">
                     <header>
-                        <p style="font-size:200%; text-align:center;">The latest news, events, and updates all in once place</p>
+                        <p style="font-size:200%; text-align:center;">Coventry's latest news, events, and updates all in once place</p>
                         <p style="text-align:center;">Last updated: {lastupdate}</p>
                         
 						<hr>
