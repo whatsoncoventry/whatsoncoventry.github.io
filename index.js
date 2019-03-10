@@ -47,23 +47,23 @@ router.get('/events', async ctx => {
 		const data = await db.all(sql)
 		await db.close()
 		console.log(data)
-        await ctx.render('search', {events: data, query: querystring})
+        await ctx.render('events', {events: data, query: querystring})
         } catch(err) {
 		ctx.body = err.message
 	}
 })
 
-router.get('/elements', async ctx => {
+router.get('/visit', async ctx => {
 	try {
-        await ctx.render('elements')
+        await ctx.render('visit')
         } catch(err) {
 		ctx.body = err.message
 	}
 })
 
-router.get('/generic', async ctx => {
+router.get('/news', async ctx => {
 	try {
-        await ctx.render('generic')
+        await ctx.render('news')
         } catch(err) {
 		ctx.body = err.message
 	}
