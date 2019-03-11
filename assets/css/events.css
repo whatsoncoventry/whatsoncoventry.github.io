@@ -9,6 +9,7 @@ section {
 #searchbar {
     float:left;
     width:80%;
+    padding-bottom:20px;
 }
 
 #search-button {
