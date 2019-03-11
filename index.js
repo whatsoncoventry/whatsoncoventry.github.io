@@ -35,11 +35,11 @@ router.get('/', async ctx => {
 
 router.get('/events', async ctx => {
 	try {
-        let sql = 'SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress FROM eventspage;'
+        let sql = 'SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress, eventimage FROM eventspage;'
 		let querystring = ''
 		console.log(ctx.query.q)
 		if(ctx.query !== undefined && ctx.query.q !== undefined) {
-			sql = `SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress FROM eventspage 
+			sql = `SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress, eventimage FROM eventspage 
 							WHERE  upper(eventname) LIKE upper("%${ctx.query.q}%");`
 			querystring = ctx.query.q
 		}
