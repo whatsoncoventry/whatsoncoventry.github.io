@@ -69,4 +69,12 @@ router.get('/news', async ctx => {
 	}
 })
 
+router.get('/discovery', async ctx => {
+	try {
+        await ctx.render('discovery')
+        } catch(err) {
+		ctx.body = err.message
+	}
+})
+
 module.exports = app.listen(PORT, () => console.log(`listening on port ${ PORT }`))
