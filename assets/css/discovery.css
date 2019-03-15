@@ -10,13 +10,13 @@
 .rightcolumn {
     float:right;
     width:60%;
-    padding-right: 10%;
+    margin-right: 10%;
 }
 
 .leftcolumn {
     float:left;
     width:40%;
-    padding-left: 15%
+    margin-left: 15%
 }
 
 .row:after {
