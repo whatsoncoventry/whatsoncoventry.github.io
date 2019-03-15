@@ -9,14 +9,14 @@
 
 .rightcolumn {
     float:left;
-    width:60%;
-    margin-right: 10%;
+    width:50%;
+    margin: 100px;
 }
 
 .leftcolumn {
-    float:left;
-    width:40%;
-    margin-left: 15%
+    float:right;
+    width:50%;
+    margin: 100px;
 }
 
 .row:after {
