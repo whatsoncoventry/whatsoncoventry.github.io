@@ -2,14 +2,14 @@
 @import url(main.css);
 
 .rightcolumn {
-    float:left;
+    float:right;
     width:60%;
     margin: 0 1.5%;
 }
 
 .leftcolumn {
-    float:right;
-    width:auto;
+    float:left;
+    width: 40%;
     margin: 0 1.5%;
 }
 
