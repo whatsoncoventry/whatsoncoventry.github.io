@@ -3,13 +3,13 @@
 
 .rightcolumn {
     float: right;
-    width: 600px;
-    margin: 1%;
+    width: 520px;
+    margin: 10px;
 }
 
 .leftcolumn {
     float:left;
-    width: 30%;
+    width: 480px;
     margin: 10px;
 }
 
