@@ -5,6 +5,7 @@
     float: right;
     width: 30%;
     margin: 10px;
+    display: inline-block;
 }
 
 .leftcolumn {
