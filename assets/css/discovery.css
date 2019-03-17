@@ -54,133 +54,43 @@
   position: relative;
   text-align: center;
   width: 100%; }
-#heading input, #heading select, #heading textarea {
+#headingDis input, #heading select, #heading textarea {
     color: #ffffff; }
-  #heading a {
+  #headingDis a {
     color: deepskyblue; }
-  #heading strong, #heading b {
+  #headingDis strong, #heading b {
     color: #ffffff; }
-  #heading h1, #heading h2, #heading h3, #heading h4, #heading h5, #heading h6 {
+  #headingDis h1, #headingDis h2, #headingDis h3, #headingDis h4, #headingDis h5, #headingDis h6 {
     color: #ffffff; }
-  #heading blockquote {
+  #headingDis blockquote {
     border-left-color: rgba(255, 255, 255, 0.25); }
-  #heading code {
+  #headingDis code {
     background: rgba(255, 255, 255, 0.075);
     border-color: rgba(255, 255, 255, 0.25); }
-  #heading hr {
+  #headingDis hr {
     border-bottom-color: rgba(255, 255, 255, 0.25); }
-  #heading input[type="submit"],
-  #heading input[type="reset"],
-  #heading input[type="button"],
-  #heading button,
-  #heading .button {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 1px #ffffff;
-    color: #ffffff !important; }
-    #heading input[type="submit"]:hover,
-    #heading input[type="reset"]:hover,
-    #heading input[type="button"]:hover,
-    #heading button:hover,
-    #heading .button:hover {
-      box-shadow: inset 0 0 0 1px deepskyblue;
-      color: deepskyblue !important; }
-      #heading input[type="submit"]:hover:active,
-      #heading input[type="reset"]:hover:active,
-      #heading input[type="button"]:hover:active,
-      #heading button:hover:active,
-      #heading .button:hover:active {
-        background-color: rgba(206, 27, 40, 0.25); }
-    #heading input[type="submit"].primary,
-    #heading input[type="reset"].primary,
-    #heading input[type="button"].primary,
-    #heading button.primary,
-    #heading .button.primary {
-      box-shadow: none;
-      background-color: deepskyblue;
-      color: #ffffff !important; }
-      #heading input[type="submit"].primary:hover,
-      #heading input[type="reset"].primary:hover,
-      #heading input[type="button"].primary:hover,
-      #heading button.primary:hover,
-      #heading .button.primary:hover {
-        background-color: #e2212f;
-        box-shadow: none; }
-        #heading input[type="submit"].primary:hover:active,
-        #heading input[type="reset"].primary:hover:active,
-        #heading input[type="button"].primary:hover:active,
-        #heading button.primary:hover:active,
-        #heading .button.primary:hover:active {
-          background-color: #b71824; }
-  #heading label {
-    color: #ffffff; }
-  #heading input[type="text"],
-  #heading input[type="password"],
-  #heading input[type="email"],
-  #heading input[type="tel"],
-  #heading input[type="search"],
-  #heading input[type="url"],
-  #heading select,
-  #heading textarea {
-    background-color: rgba(255, 255, 255, 0.075);
-    border-color: rgba(255, 255, 255, 0.25); }
-    #heading input[type="text"]:focus,
-    #heading input[type="password"]:focus,
-    #heading input[type="email"]:focus,
-    #heading input[type="tel"]:focus,
-    #heading input[type="search"]:focus,
-    #heading input[type="url"]:focus,
-    #heading select:focus,
-    #heading textarea:focus {
-      border-color: deepskyblue;
-      box-shadow: 0 0 0 1px deepskyblue; }
-  #heading select {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(255, 255, 255, 0.25)' /%3E%3C/svg%3E"); }
-    #heading select option {
-      color: rgba(255, 255, 255, 0.5);
-      background-color: #111111; }
-  #heading input[type="checkbox"] + label,
-  #heading input[type="radio"] + label {
-    color: rgba(255, 255, 255, 0.5); }
-    #heading input[type="checkbox"] + label:before,
-    #heading input[type="radio"] + label:before {
-      background: rgba(255, 255, 255, 0.075);
-      border-color: rgba(255, 255, 255, 0.25); }
-  #heading input[type="checkbox"]:checked + label:before,
-  #heading input[type="radio"]:checked + label:before {
-    background-color: deepskyblue;
-    border-color: deepskyblue;
-    color: #ffffff; }
-  #heading input[type="checkbox"]:focus + label:before,
-  #heading input[type="radio"]:focus + label:before {
-    border-color: deepskyblue;
-    box-shadow: 0 0 0 1px deepskyblue; }
-  #heading ::-webkit-input-placeholder {
+ 
+  #headingDis ::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.4) !important; }
-  #heading :-moz-placeholder {
+  #headingDis :-moz-placeholder {
     color: rgba(255, 255, 255, 0.4) !important; }
-  #heading ::-moz-placeholder {
+  #headingDis ::-moz-placeholder {
     color: rgba(255, 255, 255, 0.4) !important; }
-  #heading :-ms-input-placeholder {
+  #headingDis :-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.4) !important; }
-  #heading ul.alt li {
-    border-top-color: rgba(255, 255, 255, 0.25); }
-  #heading table tbody tr {
-    border-color: rgba(255, 255, 255, 0.25); }
-    #heading table tbody tr:nth-child(2n + 1) {
-      background-color: rgba(255, 255, 255, 0.075); }
-  #heading table th {
-    color: #ffffff; }
-  #heading table thead {
-    border-bottom-color: rgba(255, 255, 255, 0.25); }
-  #heading table tfoot {
-    border-top-color: rgba(255, 255, 255, 0.25); }
-  #heading table.alt tbody tr td {
-    border-color: rgba(255, 255, 255, 0.25); }
-  #heading .highlights .content {
+  
+  #headingDis .highlights .content {
     background: #111111;
     box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.025); }
-  #heading .testimonials .content {
+  #headingDis .testimonials .content {
     background: #111111;
     box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.025); }
     #heading .testimonials .content .credit strong {
       color: deepskyblue; }
+  #headingDis h1 {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2; }
+  @media screen and (max-width: 980px) {
+    #headingDis {
+      padding: 2rem; } }
