@@ -3,14 +3,14 @@
 
 .rightcolumn {
     float: right;
-    width: 60%;
+    width: 50%;
     margin: 10px 10px 10px 40px;
 }
 
 .leftcolumn {
     float:left;
     width: 30%;
-    margin: 10px;
+    margin: 10px 40px 10px 10px;
 }
 
 .row:after {
