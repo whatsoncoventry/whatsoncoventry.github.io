@@ -1,22 +1,14 @@
 @import url(font-awesome.min.css);
 @import url(main.css);
 
-.midcolumn {
-    float:left;
-    width:70%;
-    margin: 0 auto;
-}
-
 .rightcolumn {
     float:left;
     width:30%;
-    margin: 100px;
 }
 
 .leftcolumn {
     float:right;
     width:30%;
-    margin: 100px;
 }
 
 .row:after {
