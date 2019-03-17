@@ -2,15 +2,13 @@
 @import url(main.css);
 
 .rightcolumn {
-    float:right;
-    width:60%;
-    margin: 0 1.5%;
+    float: right;
+    width: 50%;
 }
 
 .leftcolumn {
     float:left;
-    width: 40%;
-    margin: 0 1.5%;
+    width: 30%;
 }
 
 .row:after {
