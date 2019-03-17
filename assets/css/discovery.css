@@ -4,9 +4,7 @@
 .rightcolumn {
     float: right;
     width: 60%;
-    margin: 10px;
-    padding: 20px;
-    display: inline-block;
+    margin: 30px;
 }
 
 .leftcolumn {
