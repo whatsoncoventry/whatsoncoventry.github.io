@@ -158,10 +158,12 @@
 		 		<div class="newsletter">
 					<h3>SIGN UP TO OUR NEWSLETTER</h3>					
                     			<form id="newsletter" action="/" method="get">
-		    				Name:
-							<input type="text" placeholder="Name" name="name" required><br>
+		    				Firstname:
+							<input type="text" placeholder="Name" name="name" required
+							pattern = "[A-Za-z]{1,20}$" maxlength="20"><br>
                         			E-mail:
-							<input type="email" placeholder="E-mail address" name="newsletter" required>
+							<input type="text" placeholder="E-mail address" name="newsletter" required
+							pattern = "[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$">
                         			<br><input class="subscribe" type="submit" value="Subscribe">                        
                     			</form>
                     		</div>
