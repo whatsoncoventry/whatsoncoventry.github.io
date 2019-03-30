@@ -81,82 +81,84 @@ if __name__ == '__main__':
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
-    <body class="is-preload">
+    	<body class="is-preload">
+	
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="/">What's On Coventry</a>
-        <!-- Nav -->
-        	<nav>
-        <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/visit">Visit</a></li>
-                <li><a href="/news">News and Updates</a></li>
+        	<a class="logo" href="/">What's On Coventry</a>
+		
+        	<!-- Nav -->
+       		<nav>
+        		<ul>
+                		<li><a href="/">Home</a></li>
+                		<li><a href="/events">Events</a></li>
+                		<li><a href="/visit">Visit</a></li>
+                		<li><a href="/news">News and Updates</a></li>
             
-        </ul>
-        </nav>
+        		</ul>
+        	</nav>
         </header>
 
         <!-- Heading -->
         <div id="heading">
-            <h1 style="font-weight:bold;">News and Updates</h1>
+        	<h1 style="font-weight:bold;">News and Updates</h1>
         </div>
 		
-
         <!-- Main -->
         <section id="main" class="wrapper">
-            <div class="inner">
-                <div class="content">
-                    <header>
-                        <p style="font-size:200%; text-align:center;">Coventry's latest news, events, and updates all in once place</p>
-                        <p style="text-align:center;">Last updated: {lastupdate}</p>
-                        
-						<hr>
-                    </header>
-                    
-					<center>
-					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire"> <img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> </center>
-                     <p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
-                    	<hr />
+        	<div class="inner">
+        		<div class="content">
+                    		<header>
+                        		<p style="font-size:200%; text-align:center;">Coventry's latest news, events, and updates all in once place</p>
+                        		<p style="text-align:center;">Last updated: {lastupdate}</p>                        
+					<hr>
+                    		</header>                    
+				<center>
+					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire">
+					<img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> 
+				</center>
+                     		<p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
+                    		<hr>
                     	
-                    <h6 style="font-size:200%; text-align:center; font-weight:bold;" >Student Union News</h6>
+                    		<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Student Union News</h6>
                   		
-                     <ul><p style="font-size:120%;">{cusuUpdate}</p></ul>
-						<hr />
-					<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Coventry University News</h6>
+    				 <ul>
+				 	<p style="font-size:120%;">{cusuUpdate}</p>
+				</ul>
+				<hr>
+				<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Coventry University News</h6>
                   		
-                     <ul>{moodleUpdate}</ul>
+                     		<ul>{moodleUpdate}</ul>
                      
                      
-						<hr />
-					<a href="https://github.com/DanielJ0nes/Web-Scraper">This page is powered by a Python script written and developed by Daniel Jones</a>
-                </div>
+				<hr>
+				<a href="https://github.com/DanielJ0nes/Web-Scraper">This page is powered by a Python script written and developed by Daniel Jones</a>
+                	</div>
                 
-            </div>
+            	</div>
         </section>
 
         <footer id="footer">
-            <div class="inner">
-                <div class="content">
-                    <section>
-                        <h3>About the project</h3>
-                        <p>What's on Coventry is a project brought to you by Daniel Jones, Adam Smith, Jennifer Wan, Ricards Veveris, Thomas Walczak, Ross Woolfenden, Razcan Danciulescu and Ridvan Karaman. We aim to bring you a fast, convenient, and effective way of getting the most recent and accurate information about the city and university of Coventry</p>
-                    </section>
-
-                    <section>
-                        <h4>Social media</h4>
-                        <ul class="plain">
-                            <li><a href="https://twitter.com/WhatOnCoventry"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-                            <li><a href="https://www.facebook.com/Whats-On-Coventry-1960577907395132"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-                            <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-                            <li><a href="https://www.youtube.com/watch?v=WagR3jaBW34"><i class="icon fa-youtube">&nbsp;</i>YouTube</a></li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="copyright">
-                    &copy; Coventry University
-                </div>
-            </div>
+            	<div class="inner">
+        		<div class="content">
+                    		<section>
+                        		<h3>About the project</h3>
+                        		<p>What's on Coventry is a project brought to you by Daniel Jones, Adam Smith, Jennifer Wan, Ricards Veveris, Thomas Walczak, Ross Woolfenden, Razcan Danciulescu and Ridvan Karaman. We aim to bring you a fast, convenient, and effective way of getting the most recent and accurate information about the city and university of Coventry</p>
+                    		</section>
+                    		<section>
+                        		<h4>Social media</h4>
+                        		<ul class="plain">
+                            			<li><a href="https://twitter.com/WhatOnCoventry"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+                            			<li><a href="https://www.facebook.com/Whats-On-Coventry-1960577907395132"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                            			<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                            			<li><a href="https://www.youtube.com/watch?v=WagR3jaBW34"><i class="icon fa-youtube">&nbsp;</i>YouTube</a></li>
+                        		</ul>
+                    		</section>
+                	</div>
+                	<div class="copyright">
+                    		&copy; Coventry University
+                	</div>
+            	</div>
         </footer>
 
         <!-- Scripts -->
@@ -165,8 +167,8 @@ if __name__ == '__main__':
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-		<script type="text/javascript">function add_chatinline(){{var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}}
-add_chatinline(); </script>
+	<script type="text/javascript">function add_chatinline(){{var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}}
+	add_chatinline(); </script>
 
     </body>
 </html>
