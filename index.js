@@ -6,8 +6,14 @@
     const stat = require('koa-static')
     const Database = require('sqlite-async')
     const handlebars = require('koa-hbs-renderer')
+    const cmd = require('node-cmd')
+    const schedule = require('node-schedule')
+    const newsletter = require('./assets/js/newsletter.js')
+    const events = require('./assets/js/events.js')
     
-
+const scraper = schedule.scheduleJob('* 11 * * *', function(){
+    cmd.run('python3 views/scrapescript.py')
+})
 const app = new Koa()
 const router = new Router()
 app.use(handlebars({ paths: { views: `${__dirname}/views` } }))
@@ -19,43 +25,31 @@ const dbName = 'woCoventry.db'
 
 router.get('/', async ctx => {
 	try {
-        let newslettermessage = 'Sign up to our newsletter'
-        if(ctx.query !== undefined && ctx.query.newsletter !== undefined) {
-            const sql = `INSERT INTO newsletter VALUES ("${ctx.query.newsletter}");`
-            newslettermessage = 'Thank you for subscribing'
-            const db = await Database.open(dbName)
-            await db.run(sql)
-            await db.close()
-        }        
-        await ctx.render('index', {message: newslettermessage})
-    } catch(err) {
+        	await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email)
+		
+        	await ctx.render('index')
+     } 	catch(err) {
 		ctx.body = err.message
 	}
 })
 
 router.get('/events', async ctx => {
 	try {
-        let sql = 'SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress, eventimage FROM eventspage;'
-		let querystring = ''
-		console.log(ctx.query.q)
-		if(ctx.query !== undefined && ctx.query.q !== undefined) {
-			sql = `SELECT eventname, eventdescription, eventdate, eventtime, eventpostcode, eventaddress, eventimage FROM eventspage 
-							WHERE  upper(eventname) LIKE upper("%${ctx.query.q}%");`
-			querystring = ctx.query.q
-		}
-		const db = await Database.open(dbName)
-		const data = await db.all(sql)
-		await db.close()
-		console.log(data)
-        await ctx.render('events', {events: data, query: querystring})
-        } catch(err) {
+        	let results = await events.events(ctx.query, ctx.query.q)
+        
+        	await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email) 
+        
+        	await ctx.render('events', {events: results.data, query: results.querystring})
+      } catch(err) {
 		ctx.body = err.message
 	}
 })
 
 router.get('/visit', async ctx => {
 	try {
-        await ctx.render('visit')
+		await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email) 
+		
+        	await ctx.render('visit')
         } catch(err) {
 		ctx.body = err.message
 	}
@@ -63,7 +57,9 @@ router.get('/visit', async ctx => {
 
 router.get('/news', async ctx => {
 	try {
-        await ctx.render('news')
+		await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email) 
+        
+		await ctx.render('news')
         } catch(err) {
 		ctx.body = err.message
 	}
@@ -71,7 +67,9 @@ router.get('/news', async ctx => {
 
 router.get('/discovery', async ctx => {
 	try {
-        await ctx.render('discovery')
+		await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email) 
+        
+		await ctx.render('discovery')
         } catch(err) {
 		ctx.body = err.message
 	}
@@ -79,7 +77,9 @@ router.get('/discovery', async ctx => {
 
 router.get('/media', async ctx => {
 	try {
-        await ctx.render('media')
+		await newsletter.subscribe(ctx.query, ctx.query.name, ctx.query.email) 
+        
+		await ctx.render('media')
         } catch(err) {
 		ctx.body = err.message
 	}
