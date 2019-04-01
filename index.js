@@ -77,4 +77,12 @@ router.get('/discovery', async ctx => {
 	}
 })
 
+router.get('/media', async ctx => {
+	try {
+        await ctx.render('media')
+        } catch(err) {
+		ctx.body = err.message
+	}
+})
+
 module.exports = app.listen(PORT, () => console.log(`listening on port ${ PORT }`))
