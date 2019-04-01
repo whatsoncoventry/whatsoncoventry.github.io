@@ -58,20 +58,14 @@ def get_university_news():
 	for result in results:
 		data+=(''.join(result))
 	return data
-if __name__ == '__main__':
-	#Example usage
-	bbcStory = get_top_story_bbc()
-	cusuUpdate = get_updates_cusu()
-	moodleUpdate = get_university_news()
-	bbcStoryToWeb = ' - '.join(list(bbcStory))
-	
-	"""with open('data.json', 'w') as fp:
-					json.dump(bbcStory, fp, indent=4) 							#json incorporation
-					for i in range(len(cusuUpdate)):
-						json.dump(cusuUpdate[i].tolist(), fp, indent=4)
-					json.dump(moodleUpdate, fp, indent=4)"""
+
+#Example usage
+bbcStory = get_top_story_bbc()
+cusuUpdate = get_updates_cusu()
+moodleUpdate = get_university_news()
+bbcStoryToWeb = ' - '.join(list(bbcStory))	
 			
-	webpage = '''<!DOCTYPE HTML>
+webpage = '''<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>What's On Coventry</title>
@@ -83,84 +77,101 @@ if __name__ == '__main__':
 	</head>
     	<body class="is-preload">
 	
-        <!-- Header -->
-        <header id="header">
-        	<a class="logo" href="/">What's On Coventry</a>
+        	<!-- Header -->
+        	<header id="header">
+        		<a class="logo" href="/">What's On Coventry</a>
 		
-        	<!-- Nav -->
-       		<nav>
-        		<ul>
-                		<li><a href="/">Home</a></li>
-                		<li><a href="/events">Events</a></li>
-                		<li><a href="/visit">Visit</a></li>
-                		<li><a href="/news">News and Updates</a></li>
-            
-        		</ul>
-        	</nav>
-        </header>
+        		<!-- Nav -->
+       			<nav>
+        			<ul>
+                			<li><a href="/">Home</a></li>
+                			<li><a href="/events">Events</a></li>
+                			<li><a href="/visit">Visit</a></li>
+                			<li><a href="/news">News and Updates</a></li>
+					<li><a href="/discovery">Discovery</a></li>            
+        			</ul>
+        		</nav>
+        	</header>
 
-        <!-- Heading -->
-        <div id="heading">
-        	<h1 style="font-weight:bold;">News and Updates</h1>
-        </div>
+        	<!-- Heading -->
+        	<div id="heading">
+        		<h1 style="font-weight:bold;">News and Updates</h1>
+        	</div>
 		
-        <!-- Main -->
-        <section id="main" class="wrapper">
-        	<div class="inner">
-        		<div class="content">
-                    		<header>
-                        		<p style="font-size:200%; text-align:center;">Coventry's latest news, events, and updates all in once place</p>
-                        		<p style="text-align:center;">Last updated: {lastupdate}</p>                        
-					<hr>
-                    		</header>                    
-				<center>
-					<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire">
-					<img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> 
-				</center>
-                     		<p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
-                    		<hr>
+        	<!-- Main -->
+        	<section id="main" class="wrapper">
+        		<div class="inner">
+        			<div class="content">
+                    			<header>
+                        			<p style="font-size:200%; text-align:center;">Coventry's latest news, events, and updates all in once place</p>
+                       		 		<p style="text-align:center;">Last updated: {lastupdate}</p>                        
+						<hr>
+                	    		</header>                    
+					<center>
+						<a href="https://www.bbc.co.uk/news/england/coventry_and_warwickshire">
+						<img class="responsive" src="images/bbcnews.png" alt="BBC Coventry and Warwickshire" style='width:380px;height:170px;'> </a> 
+					</center>
+                	     		<p style="font-size:120%; font-weight:bold;">{bbcTop}</p>
+                	    		<hr>
                     	
-                    		<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Student Union News</h6>
+                	    		<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Student Union News</h6>
                   		
-    				 <ul>
-				 	<p style="font-size:120%;">{cusuUpdate}</p>
-				</ul>
-				<hr>
-				<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Coventry University News</h6>
+    					 <ul>
+					 	<p style="font-size:120%;">{cusuUpdate}</p>
+					</ul>
+					<hr>
+					<h6 style="font-size:200%; text-align:center; font-weight:bold;" >Coventry University News</h6>
                   		
-                     		<ul>{moodleUpdate}</ul>
+                	     		<ul>{moodleUpdate}</ul>
                      
                      
-				<hr>
-				<a href="https://github.com/DanielJ0nes/Web-Scraper">This page is powered by a Python script written and developed by Daniel Jones</a>
-                	</div>
-                
-            	</div>
-        </section>
+					<hr>
+					<a href="https://github.com/DanielJ0nes/Web-Scraper">This page is powered by a Python script written and developed by Daniel Jones</a>
+                		</div>
+            		</div>
+        	</section>
+	
+		<!-- CTA -->
+		<section id="cta" class="wrapper">
+			<div class="inner">
+        		        <div class="newsletter">
+					<h3>Sign up to our newsletter</h3>
+                    			<form id="newsletter" action="/news" onsubmit="subscribed()" method="get">
+		    				Firstname:
+							<input type="text" placeholder="Name" name="name" required
+							pattern = "[A-Za-z]{1,20}$" maxlength="20"><br>
+                        			E-mail:
+							<input type="text" placeholder="E-mail address" name="email" required
+							pattern = "[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$"><br>
+                        			<input class="subscribe" type="submit" value="Subscribe">                        
+                    			</form>
+                    		</div>
+			</div>
 
-        <footer id="footer">
-            	<div class="inner">
-        		<div class="content">
-                    		<section>
-                        		<h3>About the project</h3>
-                        		<p>What's on Coventry is a project brought to you by Daniel Jones, Adam Smith, Jennifer Wan, Ricards Veveris, Thomas Walczak, Ross Woolfenden, Razcan Danciulescu and Ridvan Karaman. We aim to bring you a fast, convenient, and effective way of getting the most recent and accurate information about the city and university of Coventry</p>
-                    		</section>
-                    		<section>
-                        		<h4>Social media</h4>
-                        		<ul class="plain">
-                            			<li><a href="https://twitter.com/WhatOnCoventry"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-                            			<li><a href="https://www.facebook.com/Whats-On-Coventry-1960577907395132"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-                            			<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-                            			<li><a href="https://www.youtube.com/watch?v=WagR3jaBW34"><i class="icon fa-youtube">&nbsp;</i>YouTube</a></li>
-                        		</ul>
-                    		</section>
-                	</div>
-                	<div class="copyright">
-                    		&copy; Coventry University
-                	</div>
-            	</div>
-        </footer>
-
+        		<footer id="footer">
+            			<div class="inner">
+        				<div class="content">
+                    				<section>
+                        				<h3>About the project</h3>
+                        				<p>What's on Coventry is a project brought to you by Daniel Jones, Adam Smith, Jennifer Wan, Ricards Veveris, Thomas Walczak, Ross Woolfenden, Razcan Danciulescu and Ridvan Karaman. We aim to bring you a fast, convenient, and effective way of getting the most recent and accurate information about the city and university of Coventry</p>
+                    				</section>
+                    				<section>
+							<h4>Our Social media Accounts : </h4>
+							<ul class="plain">
+                               	 				<a href="https://www.youtube.com/watch?v=WagR3jaBW34" class="fa fa-youtube">  </a>
+                              					<a href="https://twitter.com/WhatOnCoventry" class="fa fa-twitter">   </a>
+                                				<a href="https://www.facebook.com/Whats-On-Coventry-1960577907395132" class="fa fa-facebook">   </a>
+                                				<a href="https://www.instagram.com/Whats-On-Coventry-1960577907395132" class="fa fa-instagram">   </a>			
+							</ul>
+						</section>
+                			</div>
+                			<div class="copyright">
+                    				&copy; Coventry University
+                			</div>
+            			</div>
+        		</footer>
+		</section>
+		
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
@@ -169,17 +180,16 @@ if __name__ == '__main__':
         <script src="assets/js/main.js"></script>
 	<script type="text/javascript">function add_chatinline(){{var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}}
 	add_chatinline(); </script>
+	<script>
+		function subscribed(){
+			alert("Thank you for subscribing")
+		}
+	</script>
 
     </body>
 </html>
-			'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)		
-	with open('news.hbs', 'w') as htmlPage:
-		htmlPage.write(webpage)				
-	htmlPage.close()
-	print("built")
-	"""conn = sqlite3.connect('webscraper.db') #Sql test
-				sql = conn.cursor()
-				sql.execute("INSERT INTO BBCTopStory (Article) VALUES (?)",[bbcStory])			#SQL incorporation
-				conn.commit()
-				sql.close()
-				conn.close"""
+	'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)
+with open('views/test.hbs', 'w') as htmlPage:
+	htmlPage.write(webpage)				
+htmlPage.close()
+print("built")
