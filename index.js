@@ -11,7 +11,7 @@
     const newsletter = require('./assets/js/newsletter.js')
     const events = require('./assets/js/events.js')
     
-const scraper = schedule.scheduleJob('* 11 * * *', function(){
+const scraper = schedule.scheduleJob({hour: 12}, function(){
     cmd.run('python3 views/scrapescript.py')
 })
 const app = new Koa()
