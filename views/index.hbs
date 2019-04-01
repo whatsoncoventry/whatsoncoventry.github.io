@@ -25,8 +25,7 @@
                        			<li><a href="/events">Events</a></li>
                        			<li><a href="/visit">Visit</a></li>
                        			<li><a href="/news">News and Updates</a></li>
-					<li><a href="/discovery">Discovery</a><li>
-					<li><a href="/media">Media</a><li>
+					<li><a href="/discovery">Discovery</a></li>
 			    	</ul>
 			</nav>
 		</header>
@@ -62,7 +61,7 @@
 					<section >
 						<div id="box" class="content">
 							<header>
-								<a href="visit.html">
+								<a href="/visit">
 								<img src="images/iceskate.png" alt="Ice rink" class="responsive">
       								</a>
 								<h3>Ice skating - Coventry Blaze</h3>
@@ -86,15 +85,15 @@
 		<section id="cta" class="wrapper">
 			<div class="inner">
         		        <div class="newsletter">
-					<h3>{{message}}</h3>
-                    			<form id="newsletter" action="/" method="get">
+					<h3>Sign up to our newsletter</h3>
+                    			<form id="newsletter" action="/" onsubmit="subscribed()" method="get">
 		    				Firstname:
 							<input type="text" placeholder="Name" name="name" required
 							pattern = "[A-Za-z]{1,20}$" maxlength="20"><br>
                         			E-mail:
-							<input type="text" placeholder="E-mail address" name="newsletter" required
-							pattern = "[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$">
-                        			<br><input class="subscribe" type="submit" value="Subscribe">                        
+							<input type="text" placeholder="E-mail address" name="email" required
+							pattern = "[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$"><br>
+                        			<input class="subscribe" type="submit" value="Subscribe">                        
                     			</form>
                     		</div>
 			</div>
@@ -134,6 +133,11 @@
 	<script src="js/main.js"></script>
         <script type="text/javascript">function add_chatinline(){var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
         add_chatinline(); </script>
+	<script>
+		function subscribed(){
+			alert("Thank you for subscribing")
+		}
+	</script
 	
 	</body>
 </html>
