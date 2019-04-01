@@ -189,7 +189,7 @@ webpage = '''<!DOCTYPE HTML>
     </body>
 </html>
 	'''.format(bbcTop=bbcStoryToWeb, moodleUpdate=moodleUpdate, cusuUpdate=cusuUpdate,lastupdate=lastupdate)
-with open('views/test.hbs', 'w') as htmlPage:
+with open('views/news.hbs', 'w') as htmlPage:
 	htmlPage.write(webpage)				
 htmlPage.close()
 print("built")
