@@ -25,8 +25,7 @@
                        		<li><a href="/events">Events</a></li>
                        		<li><a href="/visit">Visit</a></li>
                        		<li><a href="/news">News and Updates</a></li>
-				<li><a href="/discovery">Discovery</a><li>
-				<li><a href="/media">Media</a><li>
+				<li><a href="/discovery">Discovery</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -85,10 +84,20 @@
                     	</div>
                 </div>
 	</section>                  
-      	<section id="cta" style="text-align:left";>
+      	<section id="cta" class="wrapper">
 		<div class="inner">
-			<p>Sign up to our newsletter</p>
-			<p>Simply click here and enter your email address to sign up to our newsletter</p>
+        		<div class="newsletter">
+                        	<h3>Sign up to our newsletter</h3>
+                    		<form id="newsletter" action="/events" onsubmit="subscribed()" method="get">
+                                	Firstname:
+                                    		<input type="text" placeholder="Name" name="name" required
+                                    		pattern = "[A-Za-z]{1,20}$" maxlength="20"><br>
+                        		E-mail:
+                                    		<input type="text" placeholder="E-mail address" name="email" required
+                                    		pattern = "[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$"><br>
+                        		<input class="subscribe" type="submit" value="Subscribe">                        
+                    		</form>
+                    	</div>
 		</div>
        
 		<!-- Footer -->
@@ -122,6 +131,13 @@
 	<script src="js/breakpoints.min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">function add_chatinline(){var hccid=72962215;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+        add_chatinline(); </script>
+	<script>
+		function subscribed(){
+			alert("Thank you for subscribing")
+		}
+	</script>
 
     </body>
 </html>
