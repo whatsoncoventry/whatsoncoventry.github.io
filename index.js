@@ -11,8 +11,11 @@
     const newsletter = require('./assets/js/newsletter.js')
     const events = require('./assets/js/events.js')
     
-const scraper = schedule.scheduleJob({hour: 12}, function(){
+const scraper = schedule.scheduleJob({second: 5}, function(){
+    connection.close(console.log.bind(console, "Server got restarted for update."))
     cmd.run('python3 views/scrapescript.py')
+    console.log("built")
+    connection = app.listen(PORT, () => console.log(`listening on port ${ PORT }`))
 })
 const app = new Koa()
 const router = new Router()
@@ -85,4 +88,4 @@ router.get('/media', async ctx => {
 	}
 })
 
-module.exports = app.listen(PORT, () => console.log(`listening on port ${ PORT }`))
+var connection = app.listen(PORT, () => console.log(`listening on port ${ PORT }`))
